@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+</head>
+<body style="background-color: red">
+	<p id="ppp" style="width: 200px, height: 100px">选择图片</p>
+	<button onclick="selectImage()">点击</button>
+	<img id="imageId" src="" style="width: 100px, height: 100px">
+	<script type="text/javascript">
+		function selectImage() {
+            window.webkit.messageHandlers.selectImage.postMessage({'callback':'jsCallbackMethod'});
+		}
+		function jsCallbackMethod(imageSource) {
+            alert(imageSource);
+            var image = document.getElementById('imageId');
+            image.src = imageSource;
+            var ppp = document.getElementById('ppp');
+            ppp.innerHTML = '1234567';
+		}
+	</script>
+</body>
+</html>
